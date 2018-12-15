@@ -50,7 +50,7 @@
          }
 
          body {
-             filter: blur(1px);
+             /* filter: blur(1px); */
          }
 
          .background {
@@ -62,6 +62,7 @@
              /* background: url('train-180p.gif'); */
              background-size: cover;
              background-position: center;
+             -moz-filter: blur(2px);
              filter: blur(4px);
              z-index: -1;
          }
@@ -84,7 +85,9 @@
              left: -10px;
              min-width: calc(100vw + 20px);
              min-height: calc(100vh + 20px);
-             filter: blur(4px);
+             -moz-filter: blur(2px);
+             filter: blur(3px);
+             overflow: hidden
          }
 
          .page {
@@ -92,6 +95,8 @@
              top: 0;
              left: 0;
              width: 100%;
+             padding: 0 18px 0 13px;
+             filter: blur(0.07em);
          }
 
          h1 {
@@ -105,13 +110,12 @@
              background: #000;
              margin-top: 23px;
              margin-bottom: 23px;
-             margin-left: 13px;
              display: inline-block;
          }
          
          p {
              text-transform: uppercase;
-             margin: 4px 18px 13px 13px;
+             margin: 4px 0 13px 0;
              font-family: sans-serif;
              font-size: 14px;
              line-height: 1.5em;
