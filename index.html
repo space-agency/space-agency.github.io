@@ -13,7 +13,7 @@
              setTimeout(function() {
                  video.play();  
                  console.log('playin the video');
-             }, 100);
+             }, 500);
 
              window.addEventListener('resize', resizeCanvas, false);
 
@@ -150,7 +150,7 @@
     </head>
     <body>
         <div class="background"></div>
-        <video id="video" src="train-ride.mp4" loop autoplay></video>
+        <video id="video" src="train-ride.mp4" loop autoplay playsinline muted></video>
         <canvas id="canvas"></canvas>
         <div class="page">
             <hr/>
