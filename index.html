@@ -8,12 +8,21 @@
          window.onload = function() {
              var video = document.getElementById('video'),
                  canvas = document.getElementById('canvas'),
+                 shroud = document.getElementById('shroud'),
                  context = canvas.getContext('2d');
 
              setTimeout(function() {
+                 shroud.classList.add('hidden');
+             }, 100);
+
+             setTimeout(function() {
+                 shroud.classList.add('hidden');
                  video.play();  
-                 console.log('playin the video');
-             }, 500);
+             }, 200);
+
+             setTimeout(function() {
+                 shroud.classList.add('nowhere');
+             }, 2000);
 
              window.addEventListener('resize', resizeCanvas, false);
 
@@ -57,18 +66,8 @@
              box-sizing: border-box;
          }
 
-         .background {
-             position: fixed;
-             top: -10%;
-             left: -10%;
-             width: 120%;
-             height: 120%;
-             /* background: url('train-180p.gif'); */
-             background-size: cover;
-             background-position: center;
-             -moz-filter: blur(2px);
-             filter: blur(4px);
-             z-index: -1;
+         body {
+             background: black;
          }
 
          #canvas {
@@ -91,7 +90,7 @@
              min-height: calc(100vh + 20px);
              -moz-filter: blur(2px);
              filter: blur(3px);
-             overflow: hidden
+             overflow: hidden;
          }
 
          .page {
@@ -146,11 +145,30 @@
              width: 50px;
          }
 
+         #shroud {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: #000;
+             opacity: 1;
+             transition: opacity 1.2s ease;
+             z-index: 1;
+         }
+
+         #shroud.hidden {
+             opacity: 0;
+         }
+
+         #shroud.nowhere {
+             display: none;
+         }
+
         </style>
     </head>
     <body>
-        <div class="background"></div>
-        <video id="video" src="train-ride.mp4" loop autoplay playsinline muted></video>
+        <video id="video" class="hidden" src="train-ride.mp4" loop playsinline muted></video>
         <canvas id="canvas"></canvas>
         <div class="page">
             <hr/>
@@ -158,5 +176,6 @@
             <p><a href="mailto:space.agency.group@gmail.com" class="mail"><img alt="" src="envelope.png"/></a></p>
             
         </div>
+        <div id="shroud"></div>
     </body>
 </html>
