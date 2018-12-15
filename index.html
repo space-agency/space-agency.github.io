@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width">
+        <script>
+         window.onload = function() {
+             var video = document.getElementById('video'),
+                 canvas = document.getElementById('canvas'),
+                 context = canvas.getContext('2d');
+
+
+             window.addEventListener('resize', resizeCanvas, false);
+
+             function resizeCanvas() {
+                 canvas.width = window.innerWidth;
+                 canvas.height = window.innerHeight;
+
+                 draw();
+             }
+             resizeCanvas();
+
+             function draw() {
+                 // draw stuff
+
+                 var gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height);
+                 gradient.addColorStop(0, 'rgba(20, 200, 200, 1)');
+                 gradient.addColorStop(1, 'rgba(200, 200, 200, 0.8)');
+
+                 
+                 context.fillStyle = gradient;
+                 context.fillRect(0, 0, canvas.width, canvas.height);
+
+                 context.fillStyle = gradient;
+                 /* context.fillRect(30, 30, 50, 50); */
+                 context.fillRect(canvas.width/4, canvas.height/4, canvas.width/2, canvas.height/2);
+                 context.clearRect(canvas.width/4 + 4, canvas.height/4 + 4, canvas.width/4 + 24, canvas.height/4 + 24);
+                 context.clearRect(8, 8, canvas.width/4 - 16, canvas.height/4 - 16);
+
+             }
+         };
+        </script>
+        <style>
+         html {
+             -moz-osx-font-smoothing: grayscale;
+             -webkit-font-smoothing: antialiased;
+             font-smoothing: antialiased;
+             font-weight: 400;
+         }
+
+         body {
+             filter: blur(1px);
+         }
+
+         .background {
+             position: fixed;
+             top: -10%;
+             left: -10%;
+             width: 120%;
+             height: 120%;
+             /* background: url('train-180p.gif'); */
+             background-size: cover;
+             background-position: center;
+             filter: blur(4px);
+             z-index: -1;
+         }
+
+         #canvas {
+             /* filter: blur(4px); */
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             opacity: 0.1;
+
+             /* background: #000; */
+         }
+
+         #video {
+             position: fixed;
+             top: -10px;
+             left: -10px;
+             min-width: calc(100vw + 20px);
+             min-height: calc(100vh + 20px);
+             filter: blur(4px);
+         }
+
+         .page {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+         }
+
+         h1 {
+             color: #FFF;
+         }
+
+         hr {
+             width: 2em;
+             border: none;
+             height: 1px;
+             background: #000;
+             margin-top: 23px;
+             margin-bottom: 23px;
+             margin-left: 13px;
+             display: inline-block;
+         }
+         
+         p {
+             text-transform: uppercase;
+             margin: 4px 18px 13px 13px;
+             font-family: sans-serif;
+             font-size: 15px;
+             line-height: 1.4em;
+             letter-spacing: 0.1em;
+             max-width: 30em;
+         }
+
+        </style>
+    </head>
+    <body>
+        <div class="background"></div>
+        <video id="video" src="train-ride.mp4" loop autoplay></video>
+        <canvas id="canvas"></canvas>
+        <div class="page">
+            <hr/>
+            <p>Space Agency is a group that believes in our collective agency to make space for people, animals, celestial bodies, interesting conversation, silence, and many other open-ended endeavors.</p>
+        </div>
+    </body>
+</html>
