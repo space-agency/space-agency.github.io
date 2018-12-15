@@ -10,6 +10,10 @@
                  canvas = document.getElementById('canvas'),
                  context = canvas.getContext('2d');
 
+             setTimeout(function() {
+                 video.play();  
+                 console.log('playin the video');
+             }, 100);
 
              window.addEventListener('resize', resizeCanvas, false);
 
